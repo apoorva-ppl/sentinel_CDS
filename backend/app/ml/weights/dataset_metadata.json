@@ -1,0 +1,57 @@
+{
+    "train_samples": 6962,
+    "validation_samples": 1492,
+    "test_samples": 1493,
+    "num_features": 7,
+    "num_targets": 15,
+    "numeric_features": [
+        "Age",
+        "Infection_Freq"
+    ],
+    "binary_features": [
+        "Gender",
+        "Diabetes",
+        "Hypertension",
+        "Hospital_before"
+    ],
+    "categorical_features": [
+        "Bacteria"
+    ],
+    "feature_columns": [
+        "Age",
+        "Gender",
+        "Diabetes",
+        "Hypertension",
+        "Hospital_before",
+        "Infection_Freq",
+        "Bacteria"
+    ],
+    "target_columns": [
+        "AMX/AMP",
+        "AMC",
+        "CZ",
+        "FOX",
+        "CTX/CRO",
+        "IPM",
+        "GEN",
+        "AN",
+        "Acide nalidixique",
+        "ofx",
+        "CIP",
+        "C",
+        "Co-trimoxazole",
+        "Furanes",
+        "colistine"
+    ],
+    "bacteria_classes": 9,
+    "random_seed": 42,
+    "train_split": 0.7,
+    "validation_split": 0.15,
+    "test_split": 0.15,
+    "scaler": "StandardScaler",
+    "imputer": "Median (Infection_Freq)",
+    "target_encoding": {
+        "0": "Susceptible",
+        "1": "Intermediate/Resistant"
+    }
+}
