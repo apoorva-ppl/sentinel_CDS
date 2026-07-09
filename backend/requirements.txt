@@ -3,3 +3,34 @@ pandas
 matplotlib
 scikit-learn
 torch
+# FastAPI
+fastapi
+uvicorn
+
+# LangGraph + LangChain
+langgraph
+langchain
+langchain-community
+langchain-groq
+langchain-huggingface
+langchain-chroma
+
+# Vector DB
+chromadb
+
+# Embeddings
+sentence-transformers
+
+# Neo4j
+neo4j
+
+# ML
+torch
+pandas
+numpy
+scikit-learn
+
+# Utils
+python-dotenv
+pydantic
+pypdf
