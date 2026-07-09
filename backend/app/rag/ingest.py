@@ -1,16 +1,16 @@
 import os
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 backend_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-DOCS_PATH = os.path.join(backend_root, "data", "docs", "who_amr_guidelines.pdf")
+DOCS_PATH = os.path.join(backend_root, "data", "docs", "amr_guidelines.txt")
 CHROMA_PATH = os.path.join(backend_root, "chroma_db")
 
 def ingest_documents():
-    # 1. Load PDF
-    loader = PyPDFLoader(DOCS_PATH)
+    # 1. Load text file
+    loader = TextLoader(DOCS_PATH)
     documents = loader.load()
 
     # 2. Split into chunks
@@ -28,7 +28,7 @@ def ingest_documents():
         persist_directory=CHROMA_PATH
     )
 
-    print(f" Ingested {len(chunks)} chunks from WHO AMR Guidelines into ChromaDB")
+    print(f" Ingested {len(chunks)} chunks into ChromaDB")
     return vectorstore
 
 if __name__ == "__main__":

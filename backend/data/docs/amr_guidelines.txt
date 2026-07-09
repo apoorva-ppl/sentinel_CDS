@@ -1,0 +1,60 @@
+ANTIMICROBIAL RESISTANCE - WHO CLINICAL GUIDELINES
+
+FLUOROQUINOLONES (Ciprofloxacin, Levofloxacin):
+- First line for gram-negative urinary and respiratory infections
+- Resistance mediated by gyrA/parC mutations and CpxR efflux pumps
+- Avoid in renal impairment above certain doses
+- Not recommended for MRSA
+
+BETA-LACTAMS (Amoxicillin, Piperacillin-Tazobactam, Augmentin):
+- Contraindicated in penicillin allergy
+- Resistance via beta-lactamase and ESBL production
+- TZP preferred for polymicrobial and hospital-acquired infections
+- Augmentin covers beta-lactamase producing organisms
+
+AMINOGLYCOSIDES (Gentamicin, Amikacin):
+- Nephrotoxic — strictly avoid in renal impairment
+- Resistance via aminoglycoside-modifying enzymes AAC(6')
+- Requires therapeutic drug monitoring
+- Used as combination therapy for severe sepsis
+
+GLYCOPEPTIDES (Vancomycin):
+- Reserved for MRSA and resistant gram-positive organisms
+- Monitor renal function closely during therapy
+- VRE (Vancomycin-Resistant Enterococcus) emerging globally
+- Requires ID specialist approval in most formularies
+
+CARBAPENEMS (Meropenem, Imipenem):
+- Last resort for MDR gram-negative infections
+- Resistance via carbapenemase production (KPC, NDM-1, OXA-48)
+- Requires infectious disease specialist approval
+- Associated with C. difficile risk
+
+OXAZOLIDINONES (Linezolid):
+- Active against MRSA, VRE, and resistant gram-positives
+- No renal dose adjustment required
+- Avoid prolonged use due to myelosuppression risk
+- Oral bioavailability equivalent to IV
+
+CEPHALOSPORINS (Ceftriaxone):
+- Broad spectrum gram-negative coverage
+- Resistance via AmpC beta-lactamases
+- First line for community-acquired pneumonia
+
+CARD DATABASE KEY RESISTANCE MECHANISMS:
+- CpxR: Efflux pump regulator conferring fluoroquinolone resistance
+- gyrA mutation: DNA gyrase alteration causing quinolone resistance
+- blaKPC: Klebsiella pneumoniae carbapenemase
+- blaNDM: New Delhi metallo-beta-lactamase
+- mcr-1: Plasmid-mediated colistin resistance
+- vanA/vanB: Glycopeptide resistance genes
+- AAC(6')-Ib: Aminoglycoside acetyltransferase
+
+TREATMENT PRINCIPLES:
+- De-escalate therapy based on culture and sensitivity results
+- Consider local antibiogram data for empiric therapy selection
+- Always check renal function before aminoglycoside or glycopeptide use
+- Patient allergy history must be verified before beta-lactam prescription
+- Infection frequency increases risk of resistance development
+- Hospital-acquired infections carry higher MDR organism risk
+- Elderly patients (>65) require adjusted dosing and increased monitoring

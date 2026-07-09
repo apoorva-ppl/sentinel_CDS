@@ -6,10 +6,11 @@ from app.rag.copilot import get_copilot_response
 router = APIRouter()
 
 # Schema for incoming user chat request
+#request schema.
 class ChatRequest(BaseModel):
     message: str
     patient_context: Dict
-
+#response schema.
 class ChatResponse(BaseModel):
     response: str
 
