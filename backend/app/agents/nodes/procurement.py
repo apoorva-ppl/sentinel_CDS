@@ -12,7 +12,7 @@ backend_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../..
 INVENTORY_PATH = os.path.join(backend_root, "data", "pharmacy_inventory.json")
 
 
-#helper function to simulate async http POST req to supplier api.
+#helper function to simulate async http POST req to supplier api.(async)
 async def execute_external_order(drug_name: str, quantity: int, total_cost: float) -> dict:
     """
     Simulates sending an async HTTP POST request to a Supplier API.
@@ -50,8 +50,10 @@ async def execute_external_order(drug_name: str, quantity: int, total_cost: floa
     }
 
 
-#main function (procurement_node)
-async def procurement_node(state: AgentState) -> AgentState:
+#main function (procurement_node) sync
+    def procurement_node(state: AgentState) -> AgentState:
+    # And inside where you call execute_external_order:
+     api_response = asyncio.run(execute_external_order(selected_therapy, order_qty, total_cost))
     try:
         print("\n [DEBUG] Procurement Node: Checking Supply Chain Logistics...")
         
