@@ -3,9 +3,7 @@ from app.schemas.analysis_types import AgentState
 
 logger = logging.getLogger(__name__)
 
-# ============================================================================
-# NODE 2: STRATEGIST AGENT (CONSTRAINT SATISFACTION ENGINE)
-# ============================================================================
+
 
 def strategist_node(state: AgentState) -> AgentState:
     try:
