@@ -14,9 +14,13 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     response: str
 
+#endpoint to handle chat req to copilot engine
 @router.post("", response_model=ChatResponse)
+
+#main function
 def chat_with_copilot(request: ChatRequest):
-    try:
+    try: 
+        #response in JSON  format so that frontend can parse easily.
         reply = get_copilot_response(
             message=request.message, 
             patient_context=request.patient_context
