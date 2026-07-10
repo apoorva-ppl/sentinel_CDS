@@ -15,13 +15,15 @@ class Neo4jManager:
  
     _instance: Optional['Neo4jManager'] = None
     _driver: Optional[Driver] = None
-
+ 
+ #singleton pattern to ensure only one instance of Neo4jManager exists.
+ #efficiency and memory management.
     def __new__(cls):
         """Implement Singleton pattern to prevent multiple driver pools."""
         if cls._instance is None:
             cls._instance = super(Neo4jManager, cls).__new__(cls)
         return cls._instance
-
+    #reads url , username and password from .envs
     def __init__(self):
         if not hasattr(self, "initialized"):
             self.uri = os.getenv("NEO4J_URI", "bolt://localhost:7687")
@@ -30,19 +32,20 @@ class Neo4jManager:
             self.initialized = True
 
     def connect(self) -> Optional[Driver]:
+        #means if already connected then reuse it dont re-connect 
         if self._driver is not None:
             return self._driver
 
         try:
             # Handle secure/encrypted cloud routing vs local routing strings automatically
             is_secure = "+s" in self.uri or "neo4j+s" in self.uri
-            
+            #connection pooling 
             self._driver = GraphDatabase.driver(
                 self.uri,
                 auth=(self.user, self.password),
                 connection_timeout=5.0,
                 max_connection_lifetime=3600, # 1 hour max pool connection age
-                max_connection_pool_size=50    # Capacity for concurrent agent tasks
+                max_connection_pool_size=50    # neo4j has 50 ready connections in the pool .
             )
             
             # Verify the pool is active and ready
@@ -61,7 +64,7 @@ class Neo4jManager:
             logger.info("Closing Neo4j connection pool...")
             self._driver.close()
             self._driver = None
-
+    #every node uses this connection to query the database.
     def query(self, cypher: str, parameters: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
        
         # Auto-connect if driver wasn't explicitly initialized
@@ -72,7 +75,8 @@ class Neo4jManager:
             return []
 
         try:
-            # Using implicit or explicit read transactions is standard best practice for Neo4j 5.x+
+            #recommended Neo4j method for read-only operations. It manages read transactions and provides better reliability than directly calling session.run()
+
             with driver.session() as session:
                 def _execute_tx(tx):
                     result = tx.run(cypher, parameters or {})
