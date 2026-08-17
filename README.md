@@ -1,4 +1,4 @@
-# 🧬 Sentinel-CDS
+#  Sentinel-CDS
 ### Autonomous Clinical Decision Support via Multi-Agent Orchestration
 
 > An end-to-end medical intelligence platform that predicts Antimicrobial Resistance (AMR), verifies predictions against genomic evidence, formulates risk-adjusted therapies, and autonomously manages hospital supply chains — all via a 5-agent LangGraph pipeline.
@@ -12,7 +12,7 @@
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 Antimicrobial Resistance (AMR) kills **1.27 million people annually** and is projected to cause **10 million deaths/year by 2050**. Current clinical workflows suffer from:
 
@@ -24,7 +24,7 @@ Sentinel-CDS bridges all three gaps in a single autonomous pipeline.
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```mermaid
 graph TD
@@ -60,11 +60,11 @@ graph TD
 
 ---
 
-## 🚀 The 5-Agent Pipeline
+##  The 5-Agent Pipeline
 
 Each agent is a LangGraph node — a Python function that reads from and writes to the shared `AgentState` TypedDict. No agent talks to another directly.
 
-### 🧠 Node 1 — Predictor Agent
+###  Node 1 — Predictor Agent
 - Runs patient profile through **PyTorch multi-target MLP**
 - Predicts resistance probability for **15 antibiotics simultaneously**
 - Returns `ml_15_drug_profile`: `{drug: {is_resistant, confidence}}`
@@ -77,19 +77,19 @@ Each agent is a LangGraph node — a Python function that reads from and writes 
 - Selects drug with lowest resistance confidence score
 - Escalates to ID Specialist if no safe options remain
 
-### 🧬 Node 3 — Verifier Agent
+###  Node 3 — Verifier Agent
 - Queries **Neo4j CARD knowledge graph** for each flagged drug
 - Maps drug abbreviations to biological drug classes via `DRUG_CLASS_MAP`
 - Returns genomic evidence: gene name, family, resistance mechanism
 - Falls back to general class mechanism if pathogen-specific match not found
 
-### 💊 Node 4 — Pharmacist Agent
+###  Node 4 — Pharmacist Agent
 - Checks `pharmacy_inventory.json` for formulary status
 - Flags Drug-Drug Interactions (DDIs)
 - Returns cost per vial and approval requirements
 - Skips gracefully if no drug selected (escalation path)
 
-### 📦 Node 5 — Procurement Agent
+###  Node 5 — Procurement Agent
 - Checks current stock vs critical threshold (default: 10 vials)
 - If critical: simulates async B2B supplier API call (`asyncio.sleep`)
 - Generates structured Purchase Order JSON payload
@@ -97,7 +97,7 @@ Each agent is a LangGraph node — a Python function that reads from and writes 
 
 ---
 
-## 💬 RAG Copilot
+##  RAG Copilot
 
 A physician-facing chat interface grounded in **WHO AMR Clinical Guidelines**.
 
@@ -121,7 +121,7 @@ Patient context (resistance profile, selected therapy) injected
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technologies |
 |---|---|
@@ -134,7 +134,7 @@ Patient context (resistance profile, selected therapy) injected
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Sentinel-CDS/
@@ -180,7 +180,7 @@ Sentinel-CDS/
 
 ---
 
-## ⚙️ Setup & Installation
+##  Setup & Installation
 
 ### Prerequisites
 - Python 3.10+
@@ -243,7 +243,7 @@ npm run dev
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 ### `POST /api/analyze`
 Runs the full 5-agent pipeline.
@@ -296,7 +296,7 @@ Physician RAG Copilot.
 
 ---
 
-## 🎯 Key Engineering Decisions
+##  Key Engineering Decisions
 
 **Why LangGraph over LangChain?**
 LangChain's `SequentialChain` is stateless and linear. LangGraph gives us shared `TypedDict` state across all 5 nodes, `conditional_edges` for procurement routing, and production-grade graph execution. Our pipeline needs branching, not just chaining.
@@ -312,16 +312,8 @@ LangGraph's StateGraph executor is synchronous. Making one node async breaks the
 
 ---
 
-## 👥 The Team
+##  The Team
 
 Built by **The Found Tokens**
-
-**Hridesh** — ML Engineering (PyTorch MLP, training pipeline, model artifacts)
-
-**Apoorva** — Agentic Systems (LangGraph pipeline, Neo4j, RAG, FastAPI, Frontend)
-
 ---
-
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) for details.
+ **Finalist Project — Codecure Biohackathon, IIT BHU 2026**
